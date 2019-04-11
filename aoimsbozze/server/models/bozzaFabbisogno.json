@@ -1,0 +1,100 @@
+{
+  "name": "bozzaFabbisogno",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "idUser": {
+      "type": "string",
+      "required": true
+    },
+    "emailUser": {
+      "type": "string"
+    },
+    "problematica": {
+      "type": [
+        "string"
+      ]
+    },
+    "informazioni": {
+      "type": "string"
+    },
+    "scenarioApplicativo": {
+      "type": [
+        "string"
+      ]
+    },
+    "sbs": {
+      "type": "string"
+    },
+    "cscu": {
+      "type": "cscu"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true
+    },
+    "beneficiSociali": {
+      "type": "string"
+    },
+    "beneficiEconomici": {
+      "type": "string"
+    },
+    "domandaAggregata": {
+      "type": "string",
+      "required": true
+    },
+    "campoLibero": {
+      "type": "string"
+    },
+    "isDraft": {
+      "type": "boolean",
+      "required": true
+    },
+    "isTransmitted": {
+      "type": "boolean"
+    },
+    "isApprovated": {
+      "type": "boolean"
+    },
+    "isAccepted": {
+      "type": "boolean"
+    },
+    "isRejected": {
+      "type": "boolean"
+    },
+    "PEC": {
+      "type": "string"
+    },
+    "PECverify": {
+      "type": "boolean"
+    },
+    "paName": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "string"
+    },
+    "idOtp": {
+      "type": "string"
+    },
+    "isProcessed": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "motivazione": {
+      "type": "string"
+    },
+    "urlApos": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

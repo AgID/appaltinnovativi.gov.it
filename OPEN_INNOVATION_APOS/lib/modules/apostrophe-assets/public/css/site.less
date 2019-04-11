@@ -1,0 +1,114 @@
+@import "utils/reset.less";
+@import "bootstrap-italia.min.less";
+//@import "italia-icon-font.less";
+@import "custom.less";
+@import "lora.less";
+//@import "fontawesome.less";
+//@import "regular.less";
+
+// Delete the boilerplate CSS below when you are ready to dive in and customize your sites:
+body {
+  background-color: @apos-light;
+}
+
+.it-search-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 80px;
+    font-size: .889em;
+    color: #fff;
+}
+
+.main-content {
+  font-family: 'Karla', sans-serif;
+  margin: 200px auto;
+  padding: 20px;
+  max-width: 500px;
+  color: @apos-white;
+  background-color: @apos-primary;
+  .apos-drop-shadow;
+
+  .login-link {
+    float: right;
+    color: @apos-white;
+  }
+
+  // Basic rich-text editor styles:
+  h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+}
+
+/*///// ADMIN BAR /////*/
+.apos-ui .apos-admin-bar {
+  min-height: 80px;
+  height: 80px;
+  background-color: #0038c7;
+}
+
+.apos-admin-bar.apos-active {
+  height: auto;
+}
+
+.apos-ui .apos-admin-bar-item:hover {
+  background-color: #fff;
+  color: #0038c7;
+}
+
+.apos-ui .apos-admin-bar-item .apos-active {
+  color: #0038c7;
+  background-color: #FFF
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+.apos-ui .apos-field-input {
+  padding: 0px 20px 0px 20px !important;
+}
+
+.error {
+  color: red
+}
+
+/// FORM ////
+.form-group label {
+  position: inherit !important;
+  line-height: 1rem !important;
+  top: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.form-group small.form-text {
+  position: relative !important;
+}
+
+i.far {
+  font-style: normal !important;
+}
+
+
+/// TABLE ///
+.table thead th {
+  font-weight: 700;
+}

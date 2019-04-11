@@ -1,0 +1,90 @@
+<div data-apos-ajax-append="data-apos-ajax-append">
+    {% for consultazione in data.pieces %}
+        <div class="card">
+            <div class="overlay-card">
+                {% set immagineScheda = apos
+                    .images
+                    .first(consultazione.immagineScheda) %}
+                {% if immagineScheda.length > 0 %}
+                    <a href='{{consultazione._url}}'><img class="card-img-top" src="{{ apos.attachments.url(immagineScheda, {}) }}" alt="{{ consultazione.title }}"/></a>
+                {% else %}
+                    {% set allImage = apos
+                        .images
+                        .all(consultazione._categoriaAmministrazioneProponente.immagineCategoria) %}
+                    {% set image = allImage | random %}
+                    {% if allImage.length > 0 and image.length > 0 %}
+                        <a href='{{consultazione._url}}'><img class="card-img-top" src="{{ apos.attachments.url(image, {}) }}" alt="{{ consultazione.title }}"/></a>
+                    {% else %}
+                        {% set randomNumber = [0, 1] | random %}
+                        <a href='{{consultazione._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/{{consultazione._categoriaAmministrazioneProponente.imgTitle}}{{randomNumber}}.jpg" alt="{{ consultazione.title }}"/></a>
+                        {# <a href='{{consultazione._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/card-salute.jpg" alt="{{ consultazione.title }}"/></a> #}
+                    {% endif %}
+                {% endif %}
+
+                {# <img class="card-img-top" src="/modules/my-apostrophe-assets/img/card-salute.jpg" alt="Card Immagine"> #}
+                <div class="overlay-card-content">
+                    <h3>{{ consultazione._categoriaAmministrazioneProponente.title }}</h3>
+                    {# Qui ci va la MACROCATEGORIA NON UFFICIALE #}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    {% if consultazione._statoApertura.title === "Open" %}
+                        <h6 class="tag-open">
+                            <span lang="en">Open</span></h6>
+                    {% endif %}
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 icon-card"><img class="float-right" src="/modules/my-apostrophe-assets/img/consultazioni.png" alt="consultazioni"></div>
+            </div>
+            <div class="card-body">
+                <a class="underline" href="{{consultazione._url}}">
+                    <h5 class="titolo-card card-title">{{ consultazione.title }}</h5>
+                </a>
+                <p>{{ consultazione.description }}</p>
+                <p class="dati-card">
+                    {% if consultazione.dataPubblicazioneBando %}
+                        <strong>Pubblicazione:
+                        </strong>{{ consultazione.dataPubblicazioneBando |date('DD-MM-YYYY')}}<br>
+                    {% endif %}
+                    {% if consultazione._fasciaImporto.title %}
+                        <strong>Fascia di importo:
+                        </strong>{{ consultazione._fasciaImporto.title }}<br>
+                    {% endif %}
+                    {% if consultazione._tipologiaProcedura.title %}
+                        <strong>Tipologia Procedura:
+                        </strong>{{ consultazione._tipologiaProcedura.title }}<br>
+                    {% endif %}
+                    {% if consultazione._codiceIPAProponente.acronimo %}
+                        <strong>Proponente:
+                        </strong>{{consultazione._codiceIPAProponente.acronimo}}<br>
+                    {% elif consultazione._codiceIPAProponente.name %}
+                        <strong>Proponente:
+                        </strong>{{consultazione._codiceIPAProponente.name}}<br>
+                    {% endif %}
+                    {% if consultazione._codiceIPAAppaltante.acronimo %}
+                        <strong>Appaltante:
+                        </strong>{{consultazione._codiceIPAAppaltante.acronimo}}<br>
+                    {% elif consultazione._codiceIPAAppaltante.name %}
+                        <strong>Appaltante:
+                        </strong>{{consultazione._codiceIPAAppaltante.name}}
+                    {% elif consultazione.descrizioneAlternativaAppaltante %}
+                        <strong>Appaltante:
+                        </strong>{{ consultazione.descrizioneAlternativaAppaltante }}
+                    {% endif %}
+                </p>
+                <a class="read-more" aria-label="Leggi di più su {{consultazione.title}}" href="{{ consultazione._url }}">
+                    <span class="text">LEGGI DI PIÙ</span>
+                    <i class="it-arrow-right"></i>
+                </a>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% if data.currentPage < data.totalPages %}
+    {# "Load More" button with the "append=1" flag #}
+    <div class="row button-card">
+        <a href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}" class="btn btn-primary">Mostra altro</a>
+    </div>
+{% endif %}

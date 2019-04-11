@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="hero bg-siamo">
+        <div class="po-r container-top container">
+            <h1>
+                {{ data.page.title }}
+            </h1>
+        </div>
+        <div class="Separator Separator--up"></div>
+    </div>
+    <main role="main">
+        <div class="container customUl pb-5">
+            {{
+                    apos.area(data.page, 'main',{widgets:{
+                        'apostrophe-images':{},
+                        'apostrophe-video':{},
+                        'apostrophe-rich-text':{
+                           toolbar: ['Styles', '-', 'Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Scayt', '-',
+                            'RemoveFormat', 'SpecialChar', 'Image', 'HorizontalRule', 'Outdent', 'Indent', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                            'Bold', 'Underline', 'Italic', 'Strike', '-',
+                            'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'NumberedList', 'Blockquote', 'Split'
+                        ],
+                            styles: [
+                                    {
+                                        name: 'Title',
+                                        element: 'h2'
+                                    },
+                                    {
+                                        name: 'Heading',
+                                        element: 'h3'
+                                    },
+                                    {
+                                        name: 'Subheading',
+                                        element: 'h4'
+                                    },
+                                    {
+                                        name: 'Paragraph',
+                                        element: 'h6'
+                                    }
+                                ]
+                        }
+
+                    } })
+                }}
+        </div>
+    </main>
+{% endblock %}

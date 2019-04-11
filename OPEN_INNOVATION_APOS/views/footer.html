@@ -1,0 +1,89 @@
+<footer class="po-r footer bg-300 py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-5 col-md-6 col-lg-8 pt-3">
+        <a href="/">
+          <div class="media header-title pt-2">
+            <img class="Logo-innova img-fluid mr-3" data-src="holder.js/64x64" alt="75x80" src="/modules/my-apostrophe-assets/img/logo-innova.svg" data-holder-rendered="true">
+            <div class="media-body pl-2">
+              <h2 class="no_toc">Appaltinnovativi.GOV</h2>
+              <h3 class="no_toc d-none d-md-block">Gli appalti di innovazione della Pubblica Amministrazione</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="pt-3 mr-4 footer-title small col-8 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="media footer-title">
+          <img class="img-fluid mr-3 mt-2" data-src="holder.js/64x64" alt="" src="/modules/my-apostrophe-assets/img/logo_eu.svg" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <div class="pt-3 mr-4 col-8 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="media footer-title">
+          <a href="http://www.agenziacoesione.gov.it/it/index.html" title="Visita il sito dell' agenzia per la coesione territoriale" aria-label="Collegamento a sito esterno - Agenzia per la coesione territoriale - nuova finestra" target="_blank"><img class="img-fluid mr-3" data-src="holder.js/64x64" alt="Agenzia per la coesione territoriale" src="/modules/my-apostrophe-assets/img/logo_agenzia_coesione.svg" data-holder-rendered="true"></a>
+        </div>
+      </div>
+
+      <div class="pt-3 mr-4 col-8 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="media footer-title">
+          <a href="http://www.funzionepubblica.gov.it/dipartimento-della-funzione-pubblica" title="Visita il sito del dipartimento della funzione pubblica" aria-label="Collegamento a sito esterno - Dipartimento della funzione pubblica - nuova finestra" target="_blank"><img class="img-fluid mr-3" data-src="holder.js/64x64" alt="Dipartimento della funzione pubblica" src="/modules/my-apostrophe-assets/img/logo_funzione_pubblica.svg" data-holder-rendered="true"></a>
+        </div>
+      </div>
+
+      <div class="pt-3 mr-4 col-8 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="media footer-title">
+          <a href="http://www.pongovernance1420.gov.it/it/" title="Visita il sito del PON Governance Capacità Istituzionale 2014-2020" aria-label="Collegamento a sito esterno - PON Governance Capacità Istituzionale 2014-2020 - nuova finestra" target="_blank"><img class="img-fluid mr-3" data-src="holder.js/64x64" alt="PON Governance Capacità Istituzionale 2014-2020" src="/modules/my-apostrophe-assets/img/logo_pon_governance.svg" data-holder-rendered="true"></a>
+        </div>
+      </div>
+
+      <div class="pt-3 mr-4 footer-title small col-8 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="media footer-title">
+          <a href="https://www.agid.gov.it/" title="Visita il sito dell' Agenzia per l'Italia digitale" aria-label="Collegamento a sito esterno - Agenzia per l'Italia digitale - nuova finestra" target="_blank"><img class="img-fluid mr-3" data-src="holder.js/64x64" alt="Agenzia per l'Italia digitale" src="/modules/my-apostrophe-assets/img/AgID_bianco.png" data-holder-rendered="true"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row pt-5 pb-4">
+
+      <div class="col-8 col-sm-5 col-md-4 col-lg-4">
+        <div class="it-socials d-md-flex">
+          <span class="social">Seguici su</span>
+          <ul class="social_list list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="https://it.linkedin.com/company/agenzia-per-l%27italia-digitale" title="Visita il profilo dell' AGID su linkedin" aria-label="Collegamento a sito esterno - profilo linkedin Agenzia per l'Italia digitale - nuova finestra" target="_blank">
+                <i class="it-linkedin"></i>
+                <span class="sr-only">Linkedin</span></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://twitter.com/agidgov" title="Visita il profilo dell' AGID su twitter" aria-label="Collegamento a sito esterno - profilo twitter Agenzia per l'Italia digitale - nuova finestra" target="_blank">
+                <i class="it-twitter"></i>
+                <span class="sr-only">Twitter</span></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://medium.com/@AgidGov" title="Visita il profilo dell' AGID su medium" aria-label="Collegamento a sito esterno - profilo medium Agenzia per l'Italia digitale - nuova finestra" target="_blank">
+                <i class="it-medium"></i>
+                <span class="sr-only">Medium</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <ul class="pt-2 social_list list-inline border-top">
+      {% set linkFooter = data.global.linkFooter %}
+      {% for link in linkFooter %}
+        <li class="list-inline-item">
+          <a href="{{link._linkPage._url}}" title="{{link.title}}">{{link.title}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </footer>
+
+  <a href="#" data-attribute="return-to-top" class="return-to-top">
+    <i class="it-collapse"></i>
+    <span class="sr-only">Collapse</span></a>

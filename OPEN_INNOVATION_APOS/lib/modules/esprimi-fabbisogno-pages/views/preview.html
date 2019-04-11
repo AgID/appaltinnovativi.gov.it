@@ -1,0 +1,331 @@
+{% extends "layout.html" %}
+{% block extraBody %}
+    <script>
+        $.each($(".apos-refreshable"), function (i, el) {
+            $(el).removeClass("apos-refreshable")
+            $(el).removeAttr("data-apos-refreshable")
+        })
+        valueCheckbox()
+        function valueCheckbox() {
+            var array = {{data.doc.problematica |dump |safe}};
+            if (array.length > 0) 
+                $.each(array, function (i, v) {
+                    $(document)
+                        .find('[name=checkProblem][value=' + v + ']')
+                        .prop('checked', true);
+                })
+
+        }
+        $.each($(document).find(':input:not(:button):not([name="motivazione"]):not([name="pec"])'), function (i, el) {
+            $(el).prop("disabled", true);
+        })
+        function openModal() {
+            $("#exampleModal").modal()
+        }
+        function approveDoc(id) {
+            apos
+                .ui
+                .globalLock()
+            var obj = {};
+            obj.id = id;
+            obj.PEC = $("#pec").val()
+            obj.motivazione = $("#motivazione").val();
+            $.ajax({
+                method: "POST",
+                url: "/modules/esprimi-fabbisogno-pages/accettaFab",
+                data: obj,
+                success: function (data) {
+                    apos
+                        .ui
+                        .globalUnlock()
+                    window.document.location.href = data
+                }
+            })
+        }
+        function refuseDoc(id) {
+            apos
+                .ui
+                .globalLock()
+            var obj = {};
+            obj.id = id;
+            obj.PEC = $("#pec").val()
+            obj.motivazione = $("#motivazione").val();
+            $.ajax({
+                method: "POST",
+                url: "/modules/esprimi-fabbisogno-pages/rifiutaFab",
+                data: obj,
+                success: function (data) {
+                    apos
+                        .ui
+                        .globalUnlock()
+                    window.document.location.href = data
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block main %}
+    <div class="hero bg-siamo">
+        <div class="po-r container-top container">
+            <h1>
+                PREVIEW
+            </h1>
+        </div>
+        <div class="Separator Separator--up"></div>
+    </div>
+    <main role="main">
+        <div class="container customUl lora pb-5">
+            <div class="it-example-modal">
+                <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleModal">Motivazione</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span class="it-close"></span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea class="form-control" name="motivazione" id="motivazione" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary mr-1" onclick="approveDoc('{{data.doc.id}}')">APPROVA</button>
+                                <button type="button" class="btn btn-primary" onclick="refuseDoc('{{data.doc.id}}')">RIFIUTA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="myForm">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="lead">Un fabbisogno non soddisfatto si concretizza quando le soluzioni esistenti sul mercato non riescono a far fronte a:
+                            <br>
+                            <small>(selezionare una o più caselle)</small>
+                        </p>
+                        <div class="form-check form-check-group">
+                            <input id="checkbox9" name="checkProblem" value="0" type="checkbox" aria-labelledby="checkbox9-help">
+                            <label for="checkbox9">
+                                <b>Un problema</b>
+                            </label>
+                            <small id="checkbox9-help" class="form-text">che già oggi impatta negativamente sull’erogazione di servizi di pubblico interesse (ad esempio: un problema tecnico ad alta criticità, un cambio di budget e/o di regime fiscale, un cambiamento del comportamento dei cittadini che impatta sull’efficienza / efficacia dell’erogazione di servizi di pubblico interesse).</small>
+                        </div>
+                        <div class="form-check form-check-group">
+                            <input id="checkbox10" name="checkProblem" value="1" type="checkbox" aria-labelledby="checkbox10-help">
+                            <label for="checkbox10">
+                                <b>Un bisogno</b>
+                            </label>
+                            <small id="checkbox10-help" class="form-text">di miglioramento della qualità e/o dell’efficienza dei servizi di interesse pubblico nel futuro o per far fronte a nuovi requisitioperativi in previsione dell’introduzione di nuove funzionalità nel prossimo futuro (ad esempio: il desiderio degli ospedali di fornire ai pazienti trattamenti e servizi di monitoraggio da remoto allo scopo di ridurre i decessi).</small>
+                        </div>
+                        <div class="form-check form-check-group">
+                            <input id="checkbox11" name="checkProblem" value="2" type="checkbox" aria-labelledby="checkbox11-help">
+                            <label for="checkbox11">
+                                <b>Obiettivi politici</b>
+                            </label>
+                            <small id="checkbox11-help" class="form-text">per fronteggiare sfide sociali di medio-lungo termine (ad esempio: la riduzione delle emissioni di CO2).', 'Requisiti legislativi o di regolamentazione nell’erogazione di servizi di pubblico interesse ad alta efficienza/qualità previsti per il futuro (ad esempio: una legislazione nazionale che richiede una specifica percentuale di servizi pubblici erogabili in modalità maggiormente accessibile a partire da una data ben definita).</small>
+                        </div>
+                        <div class="form-check form-check-group">
+                            <input id="checkbox12" name="checkProblem" value="3" type="checkbox" aria-labelledby="checkbox12-help">
+                            <label for="checkbox12">
+                                <b>Requisiti legislativi o di regolamentazione</b>
+                            </label>
+                            <small id="checkbox12-help" class="form-text">nell’erogazione di servizi di pubblico interesse ad alta efficienza/qualità previsti per il futuro (ad esempio: una legislazione nazionale che richiede una specifica percentuale di servizi pubblici erogabili in modalità maggiormente accessibile a partire da una data ben definita).</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="informazioni">INSERIRE LE INFORMAZIONI RELATIVE AL PROBLEMA E AL CONTESTO NEL QUALE ESSO SI SVILUPPA
+                            <a href="#" showinfo="informazioni">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="informazioni" id="informazioni" rows="3">{{data.doc.informazioni}}</textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="scenario0">INSERIRE LO SCENARIO APPLICATIVO
+                            <a href="#" showinfo="scenario0">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="scenario0" id="scenario0" rows="3" aria-labelledby="helpScenario0">{{data.doc.scenarioApplicativo[0]}}</textarea>
+                        <small id="helpScenario0" class="form-text text-muted">(Max 600 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="scenario1">INSERIRE LO SCENARIO APPLICATIVO
+                            <a href="#" showinfo="scenario1">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="scenario1" id="scenario1" rows="3" aria-labelledby="helpScenario1">{{data.doc.scenarioApplicativo[1]}}</textarea>
+                        <small id="helpScenario1" class="form-text text-muted">(Max 600 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="scenario2">INSERIRE LO SCENARIO APPLICATIVO
+                            <a href="#" showinfo="scenario2">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="scenario2" id="scenario2" rows="3" aria-labelledby="helpScenario2">{{data.doc.scenarioApplicativo[2]}}</textarea>
+                        <small id="helpScenario2" class="form-text text-muted">(Max 600 caratteri)</small>
+                    </div>
+                </div>
+                {# <div class="row">
+                    <div class="col-12 mt-4">
+                        <p class="lead mb-1">Metodologia di individuazione dei risultati attesi dalla soluzione desiderata:</p>
+                        <div class="form-check">
+                            <input class="form-control" type="radio" name="metodologie" id="metodologiaSbs" toshow="sbsContainer" value="sbs">
+                            <label for="metodologiaSbs">Sarebbe bello se</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-control" type="radio" name="metodologie" id="metodologiaCdcu" toshow="cdcuContainer" value="cdcu">
+                            <label for="metodologiaCdcu">Costruzione dei casi d’uso</label>
+                        </div>
+                    </div>
+                </div> #}
+                <div id="sbsContainer">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="sbs">Sarebbe bello se:
+                                <a href="#" showinfo="sbs">
+                                    <i class="fa fa-info-circle">
+                                        <span class="sr-only">Informazioni</span></i>
+                                </a>
+                            </label>
+                            <textarea class="form-control" name="sbs" id="sbs" rows="3">{{data.doc.sbs}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="cdcuContainer">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="cdcuSogg">Come
+                                <a href="#" showinfo="cdcuSogg">
+                                    <i class="fa fa-info-circle">
+                                        <span class="sr-only">Informazioni</span></i>
+                                </a>
+                            </label>
+                            <textarea class="form-control" name="cdcuSogg" id="cdcuSogg" rows="3" aria-labelledby="helpCdcuSogg">{{data.doc.cscu.cdcuSogg}}</textarea>
+                            <small id="helpCdcuSogg" class="form-text text-muted">
+                                <code>&lt;&lt;soggetto&gt;&gt;</code>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="cdcuAzione">dovrei poter
+                                <a href="#" showinfo="cdcuAzione">
+                                    <i class="fa fa-info-circle">
+                                        <span class="sr-only">Informazioni</span></i>
+                                </a>
+                            </label>
+                            <textarea class="form-control" name="cdcuAzione" id="cdcuAzione" rows="3" aria-labelledby="helpCdcuAzione">{{data.doc.cscu.cdcuAzione}}</textarea>
+                            <small id="helpCdcuAzione" class="form-text text-muted">
+                                <code>&lt;&lt;azione da eseguire&gt;&gt;</code>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="cdcuValore">cosicché io/lui possa
+                                <a href="#" showinfo="cdcuValore">
+                                    <i class="fa fa-info-circle">
+                                        <span class="sr-only">Informazioni</span></i>
+                                </a>
+                            </label>
+                            <textarea class="form-control" name="cdcuValore" id="cdcuValore" rows="3" aria-labelledby="helpCdcuValore">{{data.doc.cscu.cdcuValore}}</textarea>
+                            <small id="helpCdcuValore" class="form-text text-muted">
+                                <code>&lt;&lt;valore aggiunto creato con l’adozione della soluzione innovativa&gt;&gt;</code>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="titolo">Titolo del fabbisogno
+                            <a href="#" showinfo="titolo">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="titolo" id="titolo" rows="3" aria-labelledby="helpTitolo">{{data.doc.titolo}}</textarea>
+                        <small id="helpTitolo" class="form-text text-muted">(Max 150 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="beneficiSociali">BENEFICI PER LA SOCIETA’
+                            <a href="#" showinfo="beneficiSociali">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="beneficiSociali" id="beneficiSociali" rows="3" aria-labelledby="helpBeneficiSociali">{{data.doc.beneficiSociali}}</textarea>
+                        <small id="helpBeneficiSociali" class="form-text text-muted">(Max 150 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="beneficiEconomici">BENEFICI ECONOMICI
+                            <a href="#" showinfo="beneficiEconomici">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="beneficiEconomici" id="beneficiEconomici" rows="3" aria-labelledby="helpBeneficiEconomici">{{data.doc.beneficiEconomici}}</textarea>
+                        <small id="helpBeneficiEconomici" class="form-text text-muted">(Max 150 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="domandaAggregata">DESCRIVI DOMANDA AGGREGATA
+                            <a href="#" showinfo="domandaAggregata">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="domandaAggregata" id="domandaAggregata" rows="3" aria-labelledby="helpDomandaAggregata">{{data.doc.domandaAggregata}}</textarea>
+                        <small id="helpDomandaAggregata" class="form-text text-muted">(Max 150 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="campoLibero">CAMPO LIBERO
+                            <a href="#" showinfo="campoLibero">
+                                <i class="fa fa-info-circle">
+                                    <span class="sr-only">Informazioni</span></i>
+                            </a>
+                        </label>
+                        <textarea class="form-control" name="campoLibero" id="campoLibero" rows="3" aria-labelledby="helpCampoLibero">{{data.doc.campoLibero}}</textarea>
+                        <small id="helpCampoLibero" class="form-text text-muted">(Max 150 caratteri)</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="campoLibero">Pec pa
+                        </label>
+                        <textarea class="form-control" name="pec" id="pec" rows="3" aria-labelledby="helpPec">{{data.doc.PEC}}</textarea>
+                        <small id="helpPec" class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="row mt-2">
+
+                    <button type="button" class="btn btn-primary" onclick="openModal()">PROCEDI</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{
+  "name": "OPEN_INNOVATION_APOS",
+  "version": "2.0.0",
+  "description": "Minimal Apostrophe Boilerplate",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "monitor": "monitor"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "P'unk Avenue",
+  "license": "MIT",
+  "dependencies": {
+    "apostrophe": "^2.75.1",
+    "apostrophe-elasticsearch": "^2.1.1",
+    "apostrophe-headless": "^2.7.1",
+    "apostrophe-monitor": "^2.0.4",
+    "apostrophe-optimizer": "^2.0.2",
+    "apostrophe-second-chance-login": "^2.0.0",
+    "apostrophe-signup": "^2.0.1",
+    "apostrophe-workflow": "2.15.1",
+    "dotenv": "^6.2.0",
+    "less-middleware": "3.0.1",
+    "moment": "^2.24.0",
+    "nodemailer": "^4.7.0",
+    "otp": "^0.1.3"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "ignore": [
+      "locales/*.json",
+      "public",
+      "data"
+    ],
+    "ext": "json, js, html, less"
+  }
+}

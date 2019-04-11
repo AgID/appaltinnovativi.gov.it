@@ -1,0 +1,12 @@
+{% macro render(pages,pageLocation) %}
+    {% for page in pages %}
+        <li class="nav-item">
+            <a class="nav-link {% if pageLocation.slug === page._linkPage.slug %}active{% endif %}" href="{{page._linkPage._url}}">
+                <span>{{page.title}}</span>
+                {% if pageLocation.slug === page._linkPage.slug %}
+                    <span class="sr-only">current</span>
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon accedi</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="HP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-|-HP" transform="translate(-1049.000000, -10.000000)">
+            <g id="header">
+                <g id="slim-header">
+                    <g id="Bottone-area-personale" transform="translate(1027.000000, 0.000000)">
+                        <g id="icon-accedi" transform="translate(22.000000, 10.000000)">
+                            <path d="M2,14 C2,20.624 7.376,26 14,26 C20.624,26 26,20.624 26,14 C26,7.376 20.624,2 14,2 C7.376,2 2,7.376 2,14 Z" id="Fill-1" fill="#FFFFFF"></path>
+                            <g id="Group-18">
+                                <rect id="Rectangle-2" fill="#FFFFFF" x="0" y="0" width="30" height="30"></rect>
+                                <g id="Group-3" transform="translate(9.000000, 7.000000)" fill="#0331A9">
+                                    <path d="M5.9372529,0 C7.56253283,0 8.8745058,1.40398153 8.8745058,3.14324222 C8.8745058,4.88250292 7.56253283,6.28648444 5.9372529,6.28648444 C4.31197296,6.28648444 3,4.88250292 3,3.14324222 C3,1.40398153 4.31197296,0 5.9372529,0" id="Fill-3"></path>
+                                    <path d="M5.8745058,15.4008087 C3.42679505,15.4008087 1.26301875,14.059692 0,12.027062 C0.029372529,9.94204467 3.9163372,8.8 5.8745058,8.8 C7.82288355,8.8 11.7196391,9.94204467 11.7490116,12.027062 C10.4859928,14.059692 8.32221654,15.4008087 5.8745058,15.4008087" id="Fill-5"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

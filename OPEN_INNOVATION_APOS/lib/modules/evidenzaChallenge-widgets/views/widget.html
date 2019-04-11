@@ -1,0 +1,92 @@
+<section id="section2" class="bg-100">
+    <div class="top container py-5">
+        <h2 class="pb-5 text">In evidenza</h2>
+        <div class="card-columns">
+            {% for item in data.widget._item %}
+                <div class="card">
+                    <div class="overlay-card">
+                        {% set immagineScheda = apos
+                            .images
+                            .first(item.immagineScheda) %}
+                        {% if immagineScheda.length > 0 %}
+                            <a href='{{item._url}}'><img class="card-img-top" src="{{ apos.attachments.url(immagineScheda, {}) }}" alt="{{ item.title }}"/></a>
+                        {% else %}
+                            {% set allImage = apos
+                                .images
+                                .all(item._categoriaAmministrazione.immagineCategoria) %}
+                            {% set image = allImage | random %}
+                            {% if allImage.length > 0 and image.length > 0 %}
+                                <a href='{{item._url}}'><img class="card-img-top" src="{{ apos.attachments.url(image, {}) }}" alt="{{ item.title }}"/></a>
+                            {% else %}
+                                {% set randomNumber = [0, 1] | random %}
+                                <a href='{{item._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/{{item._categoriaAmministrazioneProponente.imgTitle}}{{randomNumber}}.jpg" alt="{{ item.title }}"/></a>
+                                {# <a href='{{item._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/card-salute.jpg" alt="{{ item.title }}"/></a> #}
+                            {% endif %}
+                        {% endif %}
+
+                        <div class="overlay-card-content">
+                            <h3>{{ item._categoriaAmministrazioneProponente.title }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                            {% if item._statoApertura.title === "Open" %}
+                                <h6 class="tag-open">
+                                    <span lang="en">Open</span></h6>
+                            {% endif %}
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 icon-card"><img class="float-right" src="/modules/my-apostrophe-assets/img/{{ item.type }}.png" alt="sfide"></div>
+                    </div>
+                    <div class="card-body">
+                        <a class="underline" href="{{item._url}}">
+                            <h5 class="titolo-card card-title">{{ item.title }}</h5>
+                        </a>
+                        <p>{{ item.description }}</p>
+                        <p class="dati-card">
+                            {% if item.dataPubblicazioneBando %}
+                                <strong>Pubblicazione:
+                                </strong>{{ item.dataPubblicazioneBando |date('DD-MM-YYYY')}}<br>
+                            {% endif %}
+                            {% if item._fasciaImporto.title %}
+                                <strong>Fascia di importo:
+                                </strong>{{ item._fasciaImporto.title }}<br>
+                            {% endif %}
+                            {% if item._tipologiaProcedura.title %}
+                                <strong>Tipologia Procedura:
+                                </strong>{{ item._tipologiaProcedura.title }}<br>
+                            {% endif %}
+                            {% if item._codiceIPAProponente.acronimo %}
+                                <strong>Proponente:
+                                </strong>{{item._codiceIPAProponente.acronimo}}<br>
+                            {% elif item._codiceIPAProponente.name %}
+                                <strong>Proponente:
+                                </strong>{{item._codiceIPAProponente.name}}<br>
+                            {% endif %}
+                            {% if item._codiceIPAAppaltante.acronimo %}
+                                <strong>Appaltante:
+                                </strong>{{item._codiceIPAAppaltante.acronimo}}<br>
+                            {% elif item._codiceIPAAppaltante.name %}
+                                <strong>Appaltante:
+                                </strong>{{item._codiceIPAAppaltante.name}}
+                            {% elif item.descrizioneAlternativaAppaltante %}
+                                <strong>Appaltante:
+                                </strong>{{ item.descrizioneAlternativaAppaltante }}
+                            {% endif %}
+                        </p>
+                        <a class="read-more" aria-label="Leggi di più su {{item.title}}" href="{{ item._url }}">
+                            <span class="text">LEGGI DI PIÙ</span>
+                            <i class="it-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+        <div class="row button-card">
+            <a href="/search" class="btn btn-primary">Vedi tutto</a>
+        </div>
+
+    </div>
+
+</section>

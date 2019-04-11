@@ -1,0 +1,90 @@
+<div data-apos-ajax-append="data-apos-ajax-append">
+    {% for fabbisogno in data.pieces %}
+        <div class="card">
+            <div class="overlay-card">
+                {% set immagineScheda = apos
+                    .images
+                    .first(fabbisogno.immagineScheda) %}
+                {% if immagineScheda.length > 0 %}
+                    <a href='{{fabbisogno._url}}'><img class="card-img-top" src="{{ apos.attachments.url(immagineScheda, {}) }}" alt="{{ fabbisogno.title }}"/></a>
+                {% else %}
+                    {% set allImage = apos
+                        .images
+                        .all(fabbisogno._categoriaAmministrazioneProponente.immagineCategoria) %}
+                    {% set image = allImage | random %}
+                    {% if allImage.length > 0 and image.length > 0 %}
+                        <a href='{{fabbisogno._url}}'><img class="card-img-top" src="{{ apos.attachments.url(image, {}) }}" alt="{{ fabbisogno.title }}"/></a>
+                    {% else %}
+                        {% set randomNumber = [0, 1] | random %}
+                        <a href='{{fabbisogno._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/{{fabbisogno._categoriaAmministrazioneProponente.imgTitle}}{{randomNumber}}.jpg" alt="{{ fabbisogno.title }}"/></a>
+                        {# <a href='{{fabbisogno._url}}'><img class="card-img-top" src="/modules/my-apostrophe-assets/img/card-salute.jpg" alt="{{ piece.title }}"/></a> #}
+                    {% endif %}
+                {% endif %}
+
+                {# <img class="card-img-top" src="/modules/my-apostrophe-assets/img/card-salute.jpg" alt="Card Immagine"> #}
+                <div class="overlay-card-content">
+                    <h3>{{ fabbisogno._categoriaAmministrazioneProponente.title }}</h3>
+                    {# Qui ci va la MACROCATEGORIA NON UFFICIALE #}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                    {% if fabbisogno._statoApertura.title === "Open" %}
+                        <h6 class="tag-open">
+                            <span lang="en">Open</span></h6>
+                    {% endif %}
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 icon-card"><img class="float-right" src="/modules/my-apostrophe-assets/img/fabbisogni.png" alt="fabbisogni"></div>
+            </div>
+            <div class="card-body">
+                <a class="underline" href="{{fabbisogno._url}}">
+                    <h5 class="titolo-card card-title">{{ fabbisogno.title }}</h5>
+                </a>
+                <p>{{ fabbisogno.description }}</p>
+                <p class="dati-card">
+                    {% if fabbisogno.dataPubblicazioneBando %}
+                        <strong>Pubblicazione:
+                        </strong>{{ fabbisogno.dataPubblicazioneBando |date('DD-MM-YYYY')}}<br>
+                    {% endif %}
+                    {% if fabbisogno._fasciaImporto.title %}
+                        <strong>Fascia di importo:
+                        </strong>{{ fabbisogno._fasciaImporto.title }}<br>
+                    {% endif %}
+                    {% if fabbisogno._tipologiaProcedura.title %}
+                        <strong>Tipologia Procedura:
+                        </strong>{{ fabbisogno._tipologiaProcedura.title }}<br>
+                    {% endif %}
+                    {% if fabbisogno._codiceIPAProponente.acronimo %}
+                        <strong>Proponente:
+                        </strong>{{fabbisogno._codiceIPAProponente.acronimo}}<br>
+                    {% elif fabbisogno._codiceIPAProponente.name %}
+                        <strong>Proponente:
+                        </strong>{{fabbisogno._codiceIPAProponente.name}}<br>
+                    {% endif %}
+                    {% if fabbisogno._codiceIPAAppaltante.acronimo %}
+                        <strong>Appaltante:
+                        </strong>{{fabbisogno._codiceIPAAppaltante.acronimo}}<br>
+                    {% elif fabbisogno._codiceIPAAppaltante.name %}
+                        <strong>Appaltante:
+                        </strong>{{fabbisogno._codiceIPAAppaltante.name}}
+                    {% elif fabbisogno.descrizioneAlternativaAppaltante %}
+                        <strong>Appaltante:
+                        </strong>{{ fabbisogno.descrizioneAlternativaAppaltante }}
+                    {% endif %}
+                </p>
+                <a class="read-more" aria-label="Leggi di più su {{fabbisogno.title}}" href="{{ fabbisogno._url }}">
+                    <span class="text">LEGGI DI PIÙ</span>
+                    <i class="it-arrow-right"></i>
+                </a>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% if data.currentPage < data.totalPages %}
+    {# "Load More" button with the "append=1" flag #}
+    <div class="row button-card">
+        <a href="{{ data.url | build({ page: data.currentPage + 1, append: 1 }) }}" class="btn btn-primary">Mostra altro</a>
+    </div>
+{% endif %}

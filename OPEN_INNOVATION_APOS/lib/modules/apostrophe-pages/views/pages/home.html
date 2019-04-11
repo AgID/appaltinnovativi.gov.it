@@ -1,0 +1,203 @@
+{#
+  This is an example home page template. It inherits and extends a layout template
+  that lives in the top-level views/ folder for convenience
+#}
+
+{% extends "layout.html" %}
+
+{% block main %}
+  <div class="hero bg-home">
+    <div class="po-r container-top container">
+      <div class="it-hero-text-wrapper">
+        <h1 class="no_toc">Le sfide della PA,<br>
+          le tue soluzioni</h1>
+      </div>
+    </div>
+    <a id="anhorSection1" style="color:white" class="arrow-02 forward mt-3" aria-hidden="true">
+      <i class="it-expand"></i>
+    </a>
+    <div class="Separator Separator--up"></div>
+  </div>
+
+  <main role="main">
+    <section id="section1">
+      <div class="container pb-5">
+        <div class="intro row m-10">
+          {{ apos.singleton(data.page, 'testoCentrale', 'apostrophe-rich-text', 
+           {
+            toolbar: ['Styles', '-', 'Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Scayt', '-',
+                            'RemoveFormat', 'SpecialChar', 'Image', 'HorizontalRule', 'Outdent', 'Indent', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                            'Bold', 'Underline', 'Italic', 'Strike', '-',
+                            'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'NumberedList', 'Blockquote', 'Split'
+                        ],
+             styles: [
+                    {
+                        name: 'Title',
+                        element: 'h2'
+                    },
+                    {
+                        name: 'Heading',
+                        element: 'h3'
+                    },
+                    {
+                        name: 'Subheading',
+                        element: 'h4'
+                    },
+                    {
+                        name: 'Paragraph',
+                        element: 'p'
+                    }
+                ]
+            	}) 
+          }}
+        </div>
+        <div class="row pb-4">
+          <div class="col-md-12">
+            <div class="text-center">
+              <button type="button" id="anhorSection2" class="btn btn-primary">Scopri di più</button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center container pb-5 pt-7 p-rel">
+          <h2>Il percorso dell’innovazione</h2>
+        </div>
+        <div class="row pb-5 step-mobile content-center">
+          <div class="card-step col-lg-3 step mb-4 card-stepblu">
+            <img class="img-step" src="/modules/my-apostrophe-assets/img/step-1.svg" alt="Immagine relativa al fabbisogno">
+            <div class="pl-step pt-3">
+              <h5 class="step pb-2">
+                Fabbisogno</h5>
+              <p class="">
+                {{ apos.singleton(data.page, 'fabbisogni', 'apostrophe-rich-text', 
+            {
+            toolbar: ['Styles', '-', 'Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Scayt', '-',
+                            'RemoveFormat', 'SpecialChar', 'Image', 'HorizontalRule', 'Outdent', 'Indent', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                            'Bold', 'Underline', 'Italic', 'Strike', '-',
+                            'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'NumberedList', 'Blockquote', 'Split'
+                        ],
+             styles: [
+                    {
+                        name: 'Title',
+                        element: 'h2'
+                    },
+                    {
+                        name: 'Heading',
+                        element: 'h3'
+                    },
+                    {
+                        name: 'Subheading',
+                        element: 'h4'
+                    },
+                    {
+                        name: 'Paragraph',
+                        element: 'p'
+                    }
+                ]
+            	}) 
+          }}
+              </p>
+              <a class="read-more" href="/fabbisogni">
+                <span class="text">TUTTI I FABBISOGNI</span>
+                <i class="it-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-step m-step col-lg-3 step mb-4 card-steprossa">
+            <img class="img-step" src="/modules/my-apostrophe-assets/img/step-2.svg" alt="Immagine relativa alle consultazioni">
+            <div class="pl-step pt-3">
+              <h5 class="step pb-2">Consultazione</h5>
+              <p class="">
+                {{ apos.singleton(data.page, 'consultazioni', 'apostrophe-rich-text', 
+            { toolbar: ['Styles', '-', 'Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Scayt', '-',
+                            'RemoveFormat', 'SpecialChar', 'Image', 'HorizontalRule', 'Outdent', 'Indent', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                            'Bold', 'Underline', 'Italic', 'Strike', '-',
+                            'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'NumberedList', 'Blockquote', 'Split'
+                        ],
+             styles: [
+                    {
+                        name: 'Title',
+                        element: 'h2'
+                    },
+                    {
+                        name: 'Heading',
+                        element: 'h3'
+                    },
+                    {
+                        name: 'Subheading',
+                        element: 'h4'
+                    },
+                    {
+                        name: 'Paragraph',
+                        element: 'p'
+                    }
+                ]
+            	}) 
+          }}
+              </p>
+              <a class="read-more" href="/consultazioni">
+                <span class="text">TUTTE LE CONSULTAZIONI</span>
+                <i class="it-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-step col-lg-3 step mb-4 card-stepgialla">
+            <img class="img-step" src="/modules/my-apostrophe-assets/img/step-3.svg" alt="Immagine relativa ad appalti">
+            <div class="pl-step pt-3">
+              <h5 class="step pb-2">Appalto</h5>
+              <p class="">
+                {{ apos.singleton(data.page, 'appalti', 'apostrophe-rich-text', 
+            { toolbar: ['Styles', '-', 'Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Scayt', '-',
+                            'RemoveFormat', 'SpecialChar', 'Image', 'HorizontalRule', 'Outdent', 'Indent', '-',
+                            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                            'Bold', 'Underline', 'Italic', 'Strike', '-',
+                            'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'NumberedList', 'Blockquote', 'Split'
+                        ],
+             styles:[
+                    {
+                        name: 'Title',
+                        element: 'h2'
+                    },
+                    {
+                        name: 'Heading',
+                        element: 'h3'
+                    },
+                    {
+                        name: 'Subheading',
+                        element: 'h4'
+                    },
+                    {
+                        name: 'Paragraph',
+                        element: 'p'
+                    }
+                ]
+            	}) 
+          }}
+              </p>
+              <a class="read-more" href="/appalti">
+                <span class="text">TUTTI GLI APPALTI</span>
+                <i class="it-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      {{
+        apos.area(
+          data.page, 
+          'inEvidenza', 
+          {widgets: 
+            {
+              'evidenzaChallenge': {}
+            }
+          })
+      }}
+
+    </main>
+    <!-- /.container -->
+  {% endblock %}
