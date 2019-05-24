@@ -38,17 +38,17 @@ spec:
         - name: DEST_PEO
           value: '[]'
         - name: EMAILPEC
-          value: appaltinnovativi@pcert.agid.gov.it
+          value: ""
         - name: EMAILPEO
-          value: appaltinnovativi@agid.gov.it
+          value: ""
         - name: HOST_PEC
-          value: smtps.pec.aruba.it
+          value: ""
         - name: HOST_PEO
-          value: smtp.office365.com
+          value: ""
         - name: PASSWORD_PEC
-          value: Lamanna2019
+          value: ""
         - name: PASSWORD_PEO
-          value: ch14l4p0c0v4l4
+          value: ""
         - name: PORT
           value: "3800"
         - name: PORT_PEC
@@ -62,9 +62,9 @@ spec:
         - name: SERVICE_PDF
           value: http://aoi-pdfprinter:4000
         - name: USER_PEC
-          value: appaltinnovativi@pcert.agid.gov.it
+          value: ""
         - name: USER_PEO
-          value: domenico.lamanna@agid.gov.it
+          value: ""
         image: francescoronci/aoi-mailer:0.5
         imagePullPolicy: Always
         name: aoi-mailer
