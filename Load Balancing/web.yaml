@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/ingressState: '{"d2ViL2RlZmF1bHQvaW5ub3ZhcmUuZ292Lml0Ly8vODA4MA==":"deployment:default:aoi-apos","d2ViL2RlZmF1bHQvaW5ub3ZhcmUuZ292Lml0Ly8zMDAw":"","d2ViaHR0cHMy":"p-g4w5c:webhttps2"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.2.31"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:web","hostname":"innovare.gov.it","allNodes":true},{"addresses":["192.168.2.31"],"port":443,"protocol":"HTTPS","serviceName":"default:ingress-a7f7f75f1d0cc2503b38378284e0245b","ingressName":"default:web","hostname":"innovare.gov.it","path":"/","allNodes":true}]'
+    kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"extensions/v1beta1","kind":"Ingress","metadata":{"annotations":{"field.cattle.io/creatorId":"user-jwbgb","field.cattle.io/ingressState":"{\"d2ViL2RlZmF1bHQvaW5ub3ZhcmUuZ292Lml0Ly8vODA4MA==\":\"deployment:default:aoi-apos\",\"d2ViL2RlZmF1bHQvaW5ub3ZhcmUuZ292Lml0Ly8zMDAw\":\"\"}","field.cattle.io/publicEndpoints":"[{\"addresses\":[\"192.168.2.31\"],\"port\":80,\"protocol\":\"HTTP\",\"serviceName\":\"default:aoi-apos\",\"ingressName\":\"default:web\",\"hostname\":\"innovare.gov.it\",\"allNodes\":true},{\"addresses\":[\"192.168.2.31\"],\"port\":80,\"protocol\":\"HTTP\",\"serviceName\":\"default:ingress-a7f7f75f1d0cc2503b38378284e0245b\",\"ingressName\":\"default:web\",\"hostname\":\"innovare.gov.it\",\"path\":\"/\",\"allNodes\":true}]"},"creationTimestamp":"2018-12-10T16:11:41Z","generation":3,"labels":{"cattle.io/creator":"norman"},"name":"web","namespace":"default","resourceVersion":"7524765","selfLink":"/apis/extensions/v1beta1/namespaces/default/ingresses/web","uid":"47e7bf48-fc96-11e8-b005-fa163e3f7016"},"spec":{"rules":[{"host":"innovare.gov.it","http":{"paths":[{"backend":{"serviceName":"aoi-apos","servicePort":3000}},{"backend":{"serviceName":"ingress-a7f7f75f1d0cc2503b38378284e0245b","servicePort":8080},"path":"/"}]}}]},"status":{"loadBalancer":{"ingress":[{"ip":"192.168.2.31"},{"ip":"192.168.2.32"},{"ip":"192.168.2.33"},{"ip":"192.168.2.34"}]}}}'
+  creationTimestamp: 2018-12-11T16:47:24Z
+  generation: 2
+  labels:
+    cattle.io/creator: norman
+  name: web
+  namespace: default
+  resourceVersion: "7696311"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/web
+  uid: 6f96c5b9-fd64-11e8-b005-fa163e3f7016
+spec:
+  rules:
+  - host: innovare.gov.it
+    http:
+      paths:
+      - backend:
+          serviceName: aoi-apos
+          servicePort: 3000
+      - backend:
+          serviceName: ingress-a7f7f75f1d0cc2503b38378284e0245b
+          servicePort: 8080
+        path: /
+  tls:
+  - hosts:
+    - innovare.gov.it
+    secretName: webhttps2
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.2.31
+    - ip: 192.168.2.32
+    - ip: 192.168.2.33
+    - ip: 192.168.2.34

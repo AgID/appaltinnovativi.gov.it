@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-jwbgb
+    pv.kubernetes.io/bind-completed: "yes"
+  creationTimestamp: 2018-10-26T09:35:25Z
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    cattle.io/creator: norman
+  name: elasticconf
+  namespace: default
+  resourceVersion: "6458"
+  selfLink: /api/v1/namespaces/default/persistentvolumeclaims/elasticconf
+  uid: 77a247fd-d902-11e8-b005-fa163e3f7016
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  volumeName: pv-rwfrp
+status:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  phase: Bound

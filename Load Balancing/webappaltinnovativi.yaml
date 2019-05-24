@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/ingressState: '{"d2ViYXBwYWx0aW5ub3ZhdGl2aS9kZWZhdWx0L2FwcGFsdGlubm92YXRpdmkuZ292Lml0Ly8vMzAwMA==":"","d2ViYXBwYWx0aW5ub3ZhdGl2aS9kZWZhdWx0L2FwcGFsdGlubm92YXRpdmkuZ292Lml0Ly8zMDAw":"","d2ViaHR0cHMy":"p-g4w5c:webhttps2"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.2.31"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webappaltinnovativi","hostname":"appaltinnovativi.gov.it","path":"/","allNodes":true},{"addresses":["192.168.2.31"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webappaltinnovativi","hostname":"appaltinnovativi.gov.it","allNodes":true}]'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+  name: webappaltinnovativi
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/webappaltinnovativi
+spec:
+  rules:
+  - host: appaltinnovativi.gov.it
+    http:
+      paths:
+      - backend:
+          serviceName: aoi-apos
+          servicePort: 3000
+        path: /
+      - backend:
+          serviceName: aoi-apos
+          servicePort: 3000
+  tls:
+  - hosts:
+    - appaltinnovativi.gov.it
+    secretName: webhttps2
+status:
+  loadBalancer: {}

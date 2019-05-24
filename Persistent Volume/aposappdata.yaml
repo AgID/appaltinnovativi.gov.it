@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-jwbgb
+    pv.kubernetes.io/bind-completed: "yes"
+  creationTimestamp: 2018-10-26T09:43:46Z
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    cattle.io/creator: norman
+  name: aposappdata
+  namespace: default
+  resourceVersion: "7504"
+  selfLink: /api/v1/namespaces/default/persistentvolumeclaims/aposappdata
+  uid: a285e203-d903-11e8-b005-fa163e3f7016
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  volumeName: apos-appdata
+status:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  phase: Bound

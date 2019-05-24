@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/ingressState: '{"YW9pLWFwb3MtaW50ZXJuYWwvZGVmYXVsdC8vLy8zMjc2Ng==":"deployment:default:aoi-apos"}'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+  name: aoi-apos-internal
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/aoi-apos-internal
+spec:
+  backend:
+    serviceName: ingress-0cc1af3f2369d1cf766bedf66e98be32
+    servicePort: 32766
+status:
+  loadBalancer: {}
