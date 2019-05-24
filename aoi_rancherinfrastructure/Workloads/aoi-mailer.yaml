@@ -1,0 +1,94 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-aoi-mailer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2019-04-19T16:21:36Z"
+        field.cattle.io/ports: '[[{"containerPort":3800,"dnsName":"aoi-mailer-hostport","hostPort":3800,"kind":"HostPort","name":"3800tcp38000","protocol":"TCP","sourcePort":3800},{"containerPort":465,"dnsName":"aoi-mailer-hostport","hostPort":465,"kind":"HostPort","name":"465tcp4650","protocol":"TCP","sourcePort":465},{"containerPort":587,"dnsName":"aoi-mailer-hostport","hostPort":587,"kind":"HostPort","name":"587tcp5870","protocol":"TCP","sourcePort":587}]]'
+        workload.cattle.io/state: '{"":"c-8pc2n:m-6954d2b61642","cGNwLXNydjA2":"c-8pc2n:m-6954d2b61642"}'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-aoi-mailer
+    spec:
+      containers:
+      - env:
+        - name: DEST_PEC
+          value: '[]'
+        - name: DEST_PEO
+          value: '[]'
+        - name: EMAILPEC
+          value: ""
+        - name: EMAILPEO
+          value: ""
+        - name: HOST_PEC
+          value: ""
+        - name: HOST_PEO
+          value: ""
+        - name: PASSWORD_PEC
+          value: ""
+        - name: PASSWORD_PEO
+          value: ""
+        - name: PORT
+          value: "3800"
+        - name: PORT_PEC
+          value: "0"
+        - name: PORT_PEO
+          value: "0"
+        - name: SERVICE_APOS
+          value: http://aoi-apos:3000/
+        - name: SERVICE_BOZZE
+          value: http://aoi-msbozze:8082/
+        - name: SERVICE_PDF
+          value: http://aoi-pdfprinter:4000
+        - name: USER_PEC
+          value: ""
+        - name: USER_PEO
+          value: ""
+        image: francescoronci/aoi-mailer:0.12
+        imagePullPolicy: Always
+        name: aoi-mailer
+        ports:
+        - containerPort: 3800
+          hostPort: 3800
+          name: 3800tcp38000
+          protocol: TCP
+        - containerPort: 465
+          hostPort: 465
+          name: 465tcp4650
+          protocol: TCP
+        - containerPort: 587
+          hostPort: 587
+          name: 587tcp5870
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsConfig: {}
+      dnsPolicy: ClusterFirst
+      hostNetwork: true
+      imagePullSecrets:
+      - name: dc-vj96g
+      nodeName: pcp-srv06
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

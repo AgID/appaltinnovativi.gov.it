@@ -1,0 +1,90 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "4"
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/publicEndpoints: '[{"nodeName":"c-bh8g2:m-72d2fddf5bd1","addresses":["192.168.2.102"],"port":9200,"protocol":"TCP","podName":"default:elasticsearch-6bfccd56db-56ddn","allNodes":false}]'
+    kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1beta2","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"2","field.cattle.io/creatorId":"user-jwbgb"},"creationTimestamp":"2018-10-26T09:35:39Z","generation":2,"labels":{"cattle.io/creator":"norman","workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"},"name":"elasticsearch","namespace":"default","resourceVersion":"21258","selfLink":"/apis/apps/v1beta2/namespaces/default/deployments/elasticsearch","uid":"7fd952ef-d902-11e8-b005-fa163e3f7016"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"annotations":{"cattle.io/timestamp":"2018-10-26T10:54:34Z","field.cattle.io/ports":"[[{\"containerPort\":9200,\"dnsName\":\"elasticsearch\",\"kind\":\"ClusterIP\",\"name\":\"9200tcp02\",\"protocol\":\"TCP\",\"sourcePort\":0}]]","workload.cattle.io/state":"{\"cGNwLXNydjA1\":\"c-6l9qp:m-9eb5e579a6b3\",\"cGNwLXNydjAz\":\"c-8pc2n:m-72d2fddf5bd1\"}"},"creationTimestamp":null,"labels":{"workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"}},"spec":{"containers":[{"image":"docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2","imagePullPolicy":"Always","name":"elasticsearch","ports":[{"containerPort":9200,"name":"9200tcp02","protocol":"TCP"}],"resources":{},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{},"privileged":false,"readOnlyRootFilesystem":false,"runAsNonRoot":false},"stdin":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","tty":true,"volumeMounts":[{"mountPath":"/usr/share/elasticsearch/data","name":"vol1"},{"mountPath":"/etc/elasticsearch","name":"vol2"}]}],"dnsPolicy":"ClusterFirst","initContainers":[{"command":["sysctl","-w","vm.max_map_count=262144"],"image":"busybox:latest","imagePullPolicy":"Always","name":"sysctl","resources":{},"securityContext":{"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"nodeName":"pcp-srv03","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"name":"vol1","persistentVolumeClaim":{"claimName":"elasticvolume"}},{"name":"vol2","persistentVolumeClaim":{"claimName":"elasticconf"}}]}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2018-10-26T09:35:39Z","lastUpdateTime":"2018-10-26T10:55:02Z","message":"ReplicaSet
+      \"elasticsearch-798d98df7d\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2018-10-26T10:55:33Z","lastUpdateTime":"2018-10-26T10:55:33Z","message":"Deployment
+      has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":2,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+  name: elasticsearch
+  selfLink: /apis/apps/v1beta2/namespaces/default/deployments/elasticsearch
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2019-05-24T09:35:42Z"
+        field.cattle.io/ports: '[[{"containerPort":9200,"dnsName":"elasticsearch-hostport","hostPort":9200,"kind":"HostPort","name":"9200tcp92000","protocol":"TCP","sourcePort":9200}]]'
+        workload.cattle.io/state: '{"":"c-8pc2n:m-72d2fddf5bd1","cGNwLXNydjA1":"c-6l9qp:m-9eb5e579a6b3","cGNwLXNydjAz":"c-8pc2n:m-72d2fddf5bd1"}'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+    spec:
+      containers:
+      - image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
+        imagePullPolicy: Always
+        name: elasticsearch
+        ports:
+        - containerPort: 9200
+          hostPort: 9200
+          name: 9200tcp92000
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: vol1
+        - mountPath: /etc/elasticsearch
+          name: vol2
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - command:
+        - sysctl
+        - -w
+        - vm.max_map_count=262144
+        image: busybox:latest
+        imagePullPolicy: Always
+        name: sysctl
+        resources: {}
+        securityContext:
+          privileged: true
+          procMount: Default
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      nodeName: pcp-srv03
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: elasticvolume
+      - name: vol2
+        persistentVolumeClaim:
+          claimName: elasticconf
+status: {}
