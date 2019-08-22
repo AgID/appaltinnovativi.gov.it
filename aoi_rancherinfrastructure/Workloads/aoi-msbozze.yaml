@@ -1,0 +1,75 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "3"
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/publicEndpoints: '[{"nodeName":"c-bh8g2:m-6954d2b61642","addresses":["192.168.2.106"],"port":8082,"protocol":"TCP","podName":"default:aoi-msbozze-7bd5b5bb85-59ns6","allNodes":false}]'
+    kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1beta2","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"8","field.cattle.io/creatorId":"user-jwbgb","field.cattle.io/publicEndpoints":"[{\"nodeName\":\"c-8pc2n:m-6954d2b61642\",\"addresses\":[\"192.168.2.34\"],\"port\":8082,\"protocol\":\"TCP\",\"podName\":\"default:aoi-msbozze-7d48c8d665-slxsr\",\"allNodes\":false}]"},"creationTimestamp":null,"generation":1,"labels":{"cattle.io/creator":"norman","workload.user.cattle.io/workloadselector":"deployment-default-aoi-msbozze"},"name":"aoi-msbozze","namespace":"default","selfLink":"/apis/apps/v1beta2/namespaces/default/deployments/aoi-msbozze"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"workload.user.cattle.io/workloadselector":"deployment-default-aoi-msbozze"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"annotations":{"cattle.io/timestamp":"2019-02-25T16:35:47Z","field.cattle.io/ports":"[[{\"containerPort\":8080,\"dnsName\":\"aoi-msbozze-hostport\",\"hostPort\":8082,\"kind\":\"HostPort\",\"name\":\"8080tcp80820\",\"protocol\":\"TCP\",\"sourcePort\":8082}]]","workload.cattle.io/state":"{\"cGNwLXNydjA2\":\"c-8pc2n:m-6954d2b61642\"}"},"creationTimestamp":null,"labels":{"workload.user.cattle.io/workloadselector":"deployment-default-aoi-msbozze"}},"spec":{"containers":[{"env":[{"name":"AUTH","value":"false"},{"name":"MDBFCN","value":"mongodb://mongodb:27017/bozzaFabbisogno"},{"name":"PORT","value":"8080"},{"name":"SERVICE_EMAIL","value":"http://aoi-mailer:3800/"},{"name":"SSL","value":"false"}],"image":"francescoronci/aoi-bozze:0.1","imagePullPolicy":"Always","name":"aoi-msbozze","ports":[{"containerPort":8080,"hostPort":8082,"name":"8080tcp80820","protocol":"TCP"}],"resources":{},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{},"privileged":false,"readOnlyRootFilesystem":false,"runAsNonRoot":false},"stdin":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","tty":true}],"dnsPolicy":"ClusterFirst","nodeName":"pcp-srv06","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{}}'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-default-aoi-msbozze
+  name: aoi-msbozze
+  selfLink: /apis/apps/v1beta2/namespaces/default/deployments/aoi-msbozze
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-aoi-msbozze
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2019-04-19T16:09:04Z"
+        field.cattle.io/ports: '[[{"containerPort":8080,"dnsName":"aoi-msbozze-hostport","hostPort":8082,"kind":"HostPort","name":"8080tcp80820","protocol":"TCP","sourcePort":8082}]]'
+        workload.cattle.io/state: '{"":"c-8pc2n:m-6954d2b61642","cGNwLXNydjA2":"c-8pc2n:m-6954d2b61642"}'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-aoi-msbozze
+    spec:
+      containers:
+      - env:
+        - name: AUTH
+          value: "false"
+        - name: MDBFCN
+          value: mongodb://mongo:27017/bozzaFabbisogno
+        - name: PORT
+          value: "8080"
+        - name: SERVICE_EMAIL
+          value: http://aoi-mailer:3800/
+        - name: SSL
+          value: "false"
+        image: francescoronci/aoi-bozze:0.2
+        imagePullPolicy: Always
+        name: aoi-msbozze
+        ports:
+        - containerPort: 8080
+          hostPort: 8082
+          name: 8080tcp80820
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: dc-vj96g
+      nodeName: pcp-srv06
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

@@ -1,0 +1,64 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "9"
+    field.cattle.io/creatorId: user-fvxbb
+    field.cattle.io/publicEndpoints: '[{"nodeName":"c-bh8g2:m-6954d2b61642","addresses":["192.168.2.106"],"port":5601,"protocol":"TCP","podName":"default:kibana-7c557dd64b-p8b7z","allNodes":false}]'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-default-kibana
+  name: kibana
+  selfLink: /apis/apps/v1beta2/namespaces/default/deployments/kibana
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-kibana
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2019-05-24T09:50:24Z"
+        field.cattle.io/ports: '[[{"containerPort":5601,"dnsName":"kibana-hostport","hostPort":5601,"kind":"HostPort","name":"5601tcp56010","protocol":"TCP","sourcePort":5601}]]'
+        workload.cattle.io/state: '{"cGNwLXNydjA2":"c-bh8g2:m-6954d2b61642"}'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-kibana
+    spec:
+      containers:
+      - env:
+        - name: elasticsearch.hosts
+          value: '''http://elasticsearch:9200'''
+        image: docker.elastic.co/kibana/kibana-oss:6.4.2
+        imagePullPolicy: Always
+        name: kibana
+        ports:
+        - containerPort: 5601
+          hostPort: 5601
+          name: 5601tcp56010
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      nodeName: pcp-srv06
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

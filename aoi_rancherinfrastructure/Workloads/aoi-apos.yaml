@@ -1,0 +1,93 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "8"
+    field.cattle.io/creatorId: user-jwbgb
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:web","hostname":"innovare.gov.it","allNodes":true},{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webwww","hostname":"www.appaltinnovativi.gov.it","path":"/","allNodes":true},{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webwww","hostname":"www.appaltinnovativi.gov.it","allNodes":true},{"addresses":["192.168.2.102"],"port":80,"protocol":"HTTP","serviceName":"default:aoi-apos","ingressName":"default:webwwwinnovare","hostname":"www.innovare.gov.it","allNodes":true},{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webappaltinnovativi","hostname":"appaltinnovativi.gov.it","path":"/","allNodes":true},{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:aoi-apos","ingressName":"default:webappaltinnovativi","hostname":"appaltinnovativi.gov.it","allNodes":true},{"addresses":["192.168.2.102"],"port":32766,"protocol":"TCP","serviceName":"default:aoi-apos-nodeport","allNodes":true},{"addresses":["192.168.2.102"],"port":443,"protocol":"HTTPS","serviceName":"default:ingress-a7f7f75f1d0cc2503b38378284e0245b","ingressName":"default:web","hostname":"innovare.gov.it","path":"/","allNodes":true},{"addresses":["192.168.2.102"],"port":80,"protocol":"HTTP","serviceName":"default:ingress-e80c3403c48ba7b35e171789ebfc4cb3","ingressName":"default:webwwwinnovare","hostname":"www.innovare.gov.it","path":"/","allNodes":true},{"nodeName":"c-bh8g2:m-9eb5e579a6b3","addresses":["192.168.2.105"],"port":8080,"protocol":"TCP","podName":"default:aoi-apos-69bdd45446-mgzh7","allNodes":false}]'
+    kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1beta2","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"28","field.cattle.io/creatorId":"user-jwbgb","field.cattle.io/publicEndpoints":"[{\"addresses\":[\"192.168.2.31\"],\"port\":80,\"protocol\":\"HTTP\",\"serviceName\":\"default:aoi-apos\",\"ingressName\":\"default:aoi-public-xip-ingress\",\"hostname\":\"aoi-public-xip-ingress.default.192.168.2.31.xip.io\",\"path\":\"/app\",\"allNodes\":true},{\"addresses\":[\"192.168.2.31\"],\"port\":32766,\"protocol\":\"TCP\",\"serviceName\":\"default:aoi-apos-nodeport\",\"allNodes\":true},{\"nodeName\":\"c-8pc2n:m-9eb5e579a6b3\",\"addresses\":[\"192.168.2.33\"],\"port\":8080,\"protocol\":\"TCP\",\"podName\":\"default:aoi-apos-f7dbbffb-5thzl\",\"allNodes\":false}]"},"creationTimestamp":"2018-10-26T09:46:13Z","generation":70,"labels":{"cattle.io/creator":"norman","workload.user.cattle.io/workloadselector":"deployment-default-aoi-apos"},"name":"aoi-apos","namespace":"default","resourceVersion":"56683","selfLink":"/apis/apps/v1beta2/namespaces/default/deployments/aoi-apos","uid":"f9c979c0-d903-11e8-b005-fa163e3f7016"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"workload.user.cattle.io/workloadselector":"deployment-default-aoi-apos"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"annotations":{"cattle.io/timestamp":"2018-10-26T15:59:42Z","field.cattle.io/ports":"[[{\"containerPort\":3000,\"dnsName\":\"aoi-apos-hostport\",\"hostPort\":8080,\"kind\":\"HostPort\",\"name\":\"3000tcp80800\",\"protocol\":\"TCP\",\"sourcePort\":8080},{\"containerPort\":3000,\"dnsName\":\"aoi-apos-nodeport\",\"kind\":\"NodePort\",\"name\":\"30000tcp327661\",\"protocol\":\"TCP\",\"sourcePort\":32766},{\"containerPort\":3000,\"dnsName\":\"aoi-apos\",\"kind\":\"ClusterIP\",\"name\":\"3000tcp80802\",\"protocol\":\"TCP\",\"sourcePort\":8080},{\"containerPort\":3000,\"dnsName\":\"aoi-apos-loadbalancer\",\"kind\":\"LoadBalancer\",\"name\":\"3000tcp803\",\"protocol\":\"TCP\",\"sourcePort\":80}]]","workload.cattle.io/state":"{\"cGNwLXNydjA1\":\"c-8pc2n:m-9eb5e579a6b3\"}"},"creationTimestamp":null,"labels":{"workload.user.cattle.io/workloadselector":"deployment-default-aoi-apos"}},"spec":{"containers":[{"env":[{"name":"ELASTICURL","value":"http://elasticsearch:9200"},{"name":"MONGOURL","value":"mongodb://mongodb:27017/apostrophe"}],"image":"francescoronci/aoi-apos:0.1","imagePullPolicy":"Always","name":"aoi-apos","ports":[{"containerPort":3000,"hostPort":8080,"name":"3000tcp80800","protocol":"TCP"},{"containerPort":3000,"name":"30000tcp327661","protocol":"TCP"},{"containerPort":3000,"name":"3000tcp80802","protocol":"TCP"},{"containerPort":3000,"name":"3000tcp803","protocol":"TCP"}],"resources":{},"securityContext":{"allowPrivilegeEscalation":false,"privileged":false,"readOnlyRootFilesystem":false,"runAsNonRoot":false},"stdin":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","tty":true,"volumeMounts":[{"mountPath":"/app/data","name":"appdata"},{"mountPath":"/app/public/uploads","name":"publicuploads"}]}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"francescoronci"}],"nodeName":"pcp-srv05","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"name":"appdata","persistentVolumeClaim":{"claimName":"aposappdata"}},{"name":"publicuploads","persistentVolumeClaim":{"claimName":"apospublicuploads"}}]}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2018-10-26T16:00:07Z","lastUpdateTime":"2018-10-26T16:00:07Z","message":"Deployment
+      has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2018-10-26T09:52:38Z","lastUpdateTime":"2018-10-26T16:00:07Z","message":"ReplicaSet
+      \"aoi-apos-f7dbbffb\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"}],"observedGeneration":70,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-default-aoi-apos
+  name: aoi-apos
+  selfLink: /apis/apps/v1beta2/namespaces/default/deployments/aoi-apos
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-aoi-apos
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2019-04-19T16:41:50Z"
+        field.cattle.io/ports: '[[{"containerPort":3000,"dnsName":"aoi-apos-hostport","hostPort":8080,"kind":"HostPort","name":"3000tcp80800","protocol":"TCP","sourcePort":8080},{"containerPort":3000,"dnsName":"aoi-apos-nodeport","kind":"NodePort","name":"30000tcp327661","protocol":"TCP","sourcePort":32766},{"containerPort":3000,"dnsName":"aoi-apos","kind":"ClusterIP","name":"3000tcp80802","protocol":"TCP","sourcePort":8080}]]'
+        workload.cattle.io/state: '{"":"c-8pc2n:m-9eb5e579a6b3","cGNwLXNydjA1":"c-8pc2n:m-9eb5e579a6b3"}'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-aoi-apos
+    spec:
+      containers:
+      - env:
+        - name: ELASTICURL
+          value: http://elasticsearch:9200
+        - name: MAIL_URI
+          value: http://aoi-mailer:3800
+        - name: MONGOURL
+          value: mongodb://mongo:27017/apostrophe
+        - name: SERVICE_URI
+          value: http://aoi-msbozze:8082
+        image: francescoronci/aoi-apos:4.11
+        imagePullPolicy: Always
+        name: aoi-apos
+        ports:
+        - containerPort: 3000
+          hostPort: 8080
+          name: 3000tcp80800
+          protocol: TCP
+        - containerPort: 3000
+          name: 30000tcp327661
+          protocol: TCP
+        - containerPort: 3000
+          name: 3000tcp80802
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /app/data
+          name: appdata
+        - mountPath: /app/public/uploads
+          name: publicuploads
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: dc-vj96g
+      nodeName: pcp-srv05
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: appdata
+        persistentVolumeClaim:
+          claimName: appdata
+      - name: publicuploads
+        persistentVolumeClaim:
+          claimName: public3
+status: {}
