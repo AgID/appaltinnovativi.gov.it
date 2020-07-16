@@ -18,7 +18,7 @@
     "dotenv": "^5.0.1",
     "express-basic-auth": "^1.2.0",
     "helmet": "^3.18.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "loopback": "^3.25.1",
     "loopback-boot": "^3.3.0",
     "loopback-component-explorer": "^6.4.0",
