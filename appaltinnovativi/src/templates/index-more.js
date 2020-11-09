@@ -282,7 +282,7 @@ class IndexMorePage extends React.Component {
     }
 
     const filteredData = filterData()
-    filteredData.sort(function () { return 0.5 - Math.random() })
+    filteredData.sort()
 
 
     return (

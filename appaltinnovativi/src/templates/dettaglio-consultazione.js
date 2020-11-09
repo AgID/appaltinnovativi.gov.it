@@ -226,7 +226,7 @@ const DettaglioConsultazione = ({ keycloak, data }) => {
                       {sfida.appaltante.map(app => (app.ente.alias + ' '))}
                       <br />
                       <br />
-                      <ButtonLike keycloak={keycloak} sfidaId={sfida.id} />
+                      <ButtonLike keycloak={keycloak} sfidaId={sfida.id} titoloSfida={sfida.consultazione.titolo} />
                       <br />
                     </p>
                   </div>

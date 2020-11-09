@@ -4,7 +4,8 @@ import { Button } from 'design-react-kit'
 
 const ButtonLike = ({
   keycloak,
-  sfidaId
+  sfidaId,
+  titoloSfida
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false)
   function openModal() {
@@ -19,12 +20,12 @@ const ButtonLike = ({
     setIsOpen(false)
   }
 
-  function handleLike(keycloak, sfidaId) {
+  function handleLike(keycloak, sfidaId,titoloSfida) {
     if (keycloak !== undefined) {
       if (!keycloak.authenticated) {
         openModal()
       } else {
-        window.open('https://survey.appaltinnovativi.gov.it/index.php/559759/newtest/Y?G01Q01=' + keycloak.idTokenParsed.preferred_username + '&G02Q03=' + sfidaId, '_blank')
+        window.open('https://survey.appaltinnovativi.gov.it/index.php/559759/newtest/Y?G01Q01=' + keycloak.idTokenParsed.preferred_username + '&G02Q03=' + sfidaId +'&G02Q04='+titoloSfida, '_blank')
       }
     }
   }
@@ -34,7 +35,7 @@ const ButtonLike = ({
       <Button
         size="md"
         color="primary"
-        onClick={() => handleLike(keycloak, sfidaId)}
+        onClick={() => handleLike(keycloak, sfidaId,titoloSfida)}
       >
         Like
       </Button>

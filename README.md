@@ -26,3 +26,26 @@ It has been configured with the following identity providers:
 It stores data on a MySQL Database.
 
 ---
+
+### Keycloak configuration
+Realm: appaltinnovativi
+
+Client configuration:
+- Client ID: gatsby-appaltinnovativi
+- Client Protocol: openid-connect
+- Root URL: https://appaltinnovativi.131.1.216.224.sslip.io
+- Valid Redirect URIs: /*
+- Admin URL: https://appaltinnovativi.131.1.216.224.sslip.io
+- Web Origins: https://appaltinnovativi.131.1.216.224.sslip.io/*, https://appaltinnovativi.131.1.216.224.sslip.io
+
+
+Agid Identity provider configuration:
+- Redirect URI: https://keycloak.131.1.216.224.nip.io/auth/realms/appaltinnovativi/broker/Agid/endpoint
+- Alias: Agid
+- Authorization URL: https://login.agid.gov.it/auth
+- Token URL: https://login.agid.gov.it/token
+- Logout URL: https://login.agid.gov.it/session/end
+- User Info URL: https://login.agid.gov.it/userinfo
+- Client Authentication: Client Secret sent as post
+- Client ID: ...
+- Client Secret: ...
