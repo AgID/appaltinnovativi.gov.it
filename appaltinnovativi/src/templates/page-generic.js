@@ -65,7 +65,7 @@ const PageGeneric = withKeycloak(({ keycloak, location, data }) => {
                           >
                             <h3>{s.titolo}</h3>
                             <br />
-                            <ReactMarkdown source={s.descrizione} />
+                            <ReactMarkdown source={s.descrizione} escapeHtml={false} />
                             {s.allegato != null &&
                               (s.allegato.extension === 'png' ||
                               s.allegato.extension === 'jpg' ||

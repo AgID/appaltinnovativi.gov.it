@@ -83,7 +83,7 @@ class IndexMorePage extends React.Component {
 
 export const InEvidenzaQuery = graphql`
 query allMadeInItalySfide {
-  allStrapiSfida(filter: {programma: {nome: {eq: "Made in Italy"}}}) {
+  allStrapiSfida(filter: {programma: {nome: {eq: "Made in Italy"}}}, sort: { fields: [appalto___dataPubblicazione, consultazione___dataPubblicazione, fabbisogno___dataPubblicazione], order: [DESC, DESC, DESC] }) {
     nodes {
       id
       stato

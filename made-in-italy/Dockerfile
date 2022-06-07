@@ -1,4 +1,4 @@
-FROM node:14.5.0
+FROM node:14.15.0-buster
 EXPOSE 80
 EXPOSE 8080
 

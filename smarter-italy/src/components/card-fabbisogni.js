@@ -52,7 +52,7 @@ const CardFabbisogni = ({ category, image, title, description, publicationDate, 
           <CardReadMore
             iconName="it-arrow-right"
             tag="a"
-            href={'https://appaltinnovativi.131.1.216.224.sslip.io/fabbisogni/' + title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-')}
+            href={'https://appaltinnovativi.gov.it/fabbisogni/' + title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-')}
             text="Leggi di più"
           />
 

@@ -57,7 +57,7 @@ export const query = graphql`
     }
 
     otherAppalti:
-    allStrapiSfida(filter: {stato: {eq: "appalto"},id: {ne: $strapiId}},limit: 6) {
+    allStrapiSfida(filter: {stato: {eq: "appalto"},id: {ne: $strapiId}}, sort: { fields: [appalto___dataPubblicazione], order: DESC }, limit: 6) {
       nodes {
         id
         bollinoOPEN
@@ -167,7 +167,7 @@ const DettaglioAppalto = ({ keycloak, data }) => {
                         <h3>La Sfida</h3>)
                       }
                       {sfida.fabbisogno.descrizione !== '---' && (
-                        <ReactMarkdown source={sfida.fabbisogno.descrizione} />)
+                        <ReactMarkdown source={sfida.fabbisogno.descrizione} escapeHtml={false} />)
                       }
                       <br />
                     </div>

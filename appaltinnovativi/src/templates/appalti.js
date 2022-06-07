@@ -66,7 +66,7 @@ class AppaltiPage extends React.Component {
 
 export const QueryAppalti = graphql`
   query QueryAppalti{
-    allStrapiSfida(filter: {stato: {eq: "appalto"}}) {
+    allStrapiSfida(filter: {stato: {eq: "appalto"}}, sort: { fields: [appalto___dataPubblicazione], order: DESC }) {
       
       nodes {
         id

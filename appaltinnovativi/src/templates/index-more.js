@@ -494,7 +494,7 @@ class IndexMorePage extends React.Component {
 
 export const InEvidenzaQuery = graphql`
  query allSfide {
-  allStrapiSfida{
+  allStrapiSfida( sort: { fields: [appalto___dataPubblicazione, consultazione___dataPubblicazione, fabbisogno___dataPubblicazione], order: [DESC, DESC, DESC] }){
     nodes {
       id
       stato

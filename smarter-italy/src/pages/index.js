@@ -23,7 +23,7 @@ const IndexPage = ({ location }) => {
             <Row>
               <Col className="col-12">
                 <h6 className="text-uppercase text-white-80 max-w-40">SMARTER ITALY</h6>
-                <h2 className="text-white max-w-40">Placeholder</h2>
+                <h2 className="text-white max-w-40">Accelerare la crescita del Paese attraverso l'utilizzo di appalti innovativi</h2>
               </Col>
             </Row>
           </Container>
@@ -33,7 +33,7 @@ const IndexPage = ({ location }) => {
           <div class="container">
             <div class="col-12">
               <h2></h2>
-              l programma Smarter Italy del Ministero dello Sviluppo Economico del Ministero dell'Università e della Ricerca e del MID - Dipartimento per la Trasformazione Digitale della Presidenza del Consiglio dei Ministri, attuato dall'Agenzia per l'Italia Digitale, si pone l’obiettivo di accelerare la crescita del Paese attraverso l’utilizzo degli appalti innovativi.
+              Il programma Smarter Italy del Ministero dello Sviluppo Economico del Ministero dell'Università e della Ricerca e del MID - Dipartimento per la Trasformazione Digitale della Presidenza del Consiglio dei Ministri, attuato dall'Agenzia per l'Italia Digitale, si pone l’obiettivo di accelerare la crescita del Paese attraverso l’utilizzo degli appalti innovativi.
             </div>
           </div>
         </div>

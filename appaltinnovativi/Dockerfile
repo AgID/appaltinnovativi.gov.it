@@ -1,7 +1,9 @@
-FROM node:14.5.0
+FROM node:14.15.0-buster
 EXPOSE 80
 EXPOSE 8080
 
+RUN apt-get update && \
+    apt-get install -y --force-yes zlib1g zlib1g-dev
 RUN npm install -g gatsby-cli
 
 COPY entrypoint.sh /

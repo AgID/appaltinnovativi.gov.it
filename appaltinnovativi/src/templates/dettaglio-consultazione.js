@@ -56,8 +56,7 @@ export const query = graphql`
       }
 
       otherConsultazioni:
-      allStrapiSfida(filter: {stato: {eq: "consultazione"},id: {ne: $strapiId}},limit: 6) {
-      
+      allStrapiSfida(filter: {stato: {eq: "consultazione"},id: {ne: $strapiId}}, sort: { fields: [consultazione___dataPubblicazione], order: DESC }, limit: 6) {
         nodes {
           id
           bollinoOPEN
@@ -162,7 +161,7 @@ const DettaglioConsultazione = ({ keycloak, data }) => {
 
                       <h3>La Sfida</h3>
 
-                      <ReactMarkdown source={sfida.fabbisogno.descrizione} />
+                      <ReactMarkdown source={sfida.fabbisogno.descrizione} escapeHtml={false}  />
 
                     </div>
                   </div>

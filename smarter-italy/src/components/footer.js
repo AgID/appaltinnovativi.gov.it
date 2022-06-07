@@ -287,20 +287,20 @@ const Footer = () => {
                   </li>
 
                   <li className="list-inline-item">
-                    <a className="mx-2 text-white" href="https://medium.com/@AgidGov"
-                      aria-label="Medium"
-                      title="Medium"
+                    <a className="mx-2 text-white" href="https://www.facebook.com/AgIDGovIT/"
+                      aria-label="Facebook"
+                      title="Facebook"
                       target="_blank"
                       rel="noreferrer"
                     >
                       <Icon
                         tag="svg"
                         className=" align-top  icon-white"
-                        icon="it-medium"
+                        icon="it-facebook"
                         padding={false}
                         size=""
                       />
-                      <span className="sr-only">Medium</span>
+                      <span className="sr-only">Facebook</span>
                     </a>
                   </li>
 

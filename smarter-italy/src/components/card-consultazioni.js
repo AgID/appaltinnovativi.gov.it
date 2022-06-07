@@ -56,7 +56,7 @@ const CardConsultazioni = ({
           <CardReadMore
             iconName="it-arrow-right"
             tag="a"
-            href={'https://appaltinnovativi.131.1.216.224.sslip.io/consultazioni/' + title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-')}
+            href={'https://appaltinnovativi.gov.it/consultazioni/' + title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-')}
             text="Leggi di più"
           />
 

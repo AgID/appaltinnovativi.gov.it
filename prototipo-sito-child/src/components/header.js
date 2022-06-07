@@ -131,8 +131,8 @@ const CenterHeader = () => {
                 </a>
               </li>
               <li>
-                <a aria-label="Medium" href="https://medium.com/@AgidGov" target="_blank" rel="noreferrer">
-                  <Icon color="" icon="it-medium" padding={false} size="" />
+                <a aria-label="Facebook" href="https://www.facebook.com/AgIDGovIT/" target="_blank" rel="noreferrer">
+                  <Icon color="" icon="it-facebook" padding={false} size="" />
                 </a>
               </li>
             </ul>

@@ -48,8 +48,7 @@ export const query = graphql`
     }
 
     otherFabbisogni:
-    allStrapiSfida(filter: {stato: {eq: "fabbisogno"},id:{ne: $strapiId}},limit: 6) {
-    
+    allStrapiSfida(filter: {stato: {eq: "fabbisogno"},id: {ne: $strapiId}}, sort: { fields: [fabbisogno___dataPubblicazione], order: DESC }, limit: 6) {
       nodes {
         id
         bollinoOPEN
@@ -146,7 +145,7 @@ const DettaglioFabbisogno = ({ keycloak, data }) => {
                 <div className="px-3 px-md-5 card-body pb-0">
                   <div className="card-text">
                     <div className="my-3" >
-                      <ReactMarkdown source={sfida.fabbisogno.descrizione} />
+                      <ReactMarkdown source={sfida.fabbisogno.descrizione} escapeHtml={false} />
                     </div>
                   </div>
                 </div>

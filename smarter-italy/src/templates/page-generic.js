@@ -68,7 +68,7 @@ export default function PageGeneric({ location, data }) {
                             }
                             <br />
                             {s.descrizione != null &&
-                              (<ReactMarkdown source={s.descrizione} />)
+                              (<ReactMarkdown source={s.descrizione} escapeHtml={false} />)
                             }
                             {s.allegato != null &&
                               (s.allegato.extension === 'png' ||

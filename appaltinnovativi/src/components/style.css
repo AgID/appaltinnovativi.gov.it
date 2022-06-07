@@ -596,6 +596,27 @@ iframe {
     background: 0 0;
     color: #fff;
 }
+
+
+.w-100 {
+  object-fit: contain;
+  height: 15vw;
+  min-height: 170px;
+  object-position: center;        
+  }        
+.card-wrapper {
+  width: 100%;
+}
+@media screen and (max-width: 1460px) {
+ .text-primary {
+  height: 60px;
+  }
+}
+
+nav.navbar {
+    z-index: 9999;
+}
+
 /* .no-webp .hero-head--homepage {
     background-image: url("../assets/images/backgrounds/christopher-burns-Kj2SaNHG-hg-unsplash.jpg")
 }

@@ -47,7 +47,7 @@ const SlimHeader = () => {
   return (
     <Header type="slim" theme="">
       <HeaderContent>
-        <HeaderBrand tag="a" href="http://governo.it" target="_blank" rel="noopener noreferrer">
+        <HeaderBrand tag="a" href="https://www.governo.it" target="_blank" rel="noopener noreferrer">
                     Agenzia per l&#39;Italia Digitale
         </HeaderBrand>
         <HeaderLinkZone>
@@ -68,30 +68,30 @@ const SlimHeader = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                                MID
+                MITD
               </LinkListItem>
               <LinkListItem
-                href="https://pianotriennale-ict.italia.it/"
+                href="https://www.agid.gov.it/sites/default/files/repository_files/piano_triennale_per_linformatica_nella_pubblica_amministrazione_2021-2023.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                                Piano Triennale
+                Piano Triennale
               </LinkListItem>
               <LinkListItem
-                href="https://designers.italia.it/it"
+                href="https://innovazione.gov.it/progetti/sperimentazione-italia/#in-breve"
 
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                                Designers Italia
+                Sperimenta Italia
               </LinkListItem>
               <LinkListItem
-                href="https://developers.italia.it/it"
+                href="https://innovation-procurement.org/"
 
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                                Developers Italia
+                Innovation procurement
               </LinkListItem>
             </LinkList>
           </Collapse>
@@ -130,8 +130,8 @@ const CenterHeader = () => {
                 </a>
               </li>
               <li>
-                <a aria-label="Medium" href="https://medium.com/@AgidGov" target="_blank" rel="noreferrer">
-                  <Icon color="" icon="it-medium" padding={false} size="" />
+                <a aria-label="Facebook" href="https://www.facebook.com/AgIDGovIT/" target="_blank" rel="noreferrer">
+                  <Icon color="" icon="it-facebook" padding={false} size="" />
                 </a>
               </li>
             </ul>
@@ -164,13 +164,7 @@ const NavHeader = ({ active }) => {
         >
           <div className="menu-wrapper">
             <Nav navbar>
-              <NavItem>
-                <NavLink href='https://appaltinnovativi.131.1.216.224.sslip.io/' tag="a">
-                  <span>Appaltinnovativi</span>
-                </NavLink>
-              </NavItem>
-
-              {['Il Programma','Sfide'].map(
+              {['Il Programma', 'Sfide'].map(
                 label => {
                   const isActive = label === active
                   return (
@@ -183,6 +177,12 @@ const NavHeader = ({ active }) => {
                   )
                 }
               )}
+
+              <NavItem>
+                <NavLink href='https://appaltinnovativi.gov.it/' tag="a">
+                  <span>Appaltinnovativi</span>
+                </NavLink>
+              </NavItem>
             </Nav>
           </div>
         </Collapse>
